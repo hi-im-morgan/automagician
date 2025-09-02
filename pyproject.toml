@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "automagician"
+version = "0.1.0"
+description = "A package to make it easier to submit jobs to servers"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: POSIX :: Linux"
+]
+requires-python = ">=3.11"
+
+dependencies = [
+]
+
+[project.optional-dependencies]
+    dev = [
+        "ruff", "mypy", "pytest", "isort", "pytest-cov"
+    ]
+    remote = [
+        "fabric"
+    ]
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+addopts = [
+    "--import-mode=importlib",
+]
+
+[project.scripts]
+automagician = "automagician:main.main"

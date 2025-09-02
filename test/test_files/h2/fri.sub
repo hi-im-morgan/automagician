@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --job-name=H2
+#SBATCH --output=ll_out
+#SBATCH --error=ll_out
+#SBATCH --mail-type=END
+#SBATCH --partition=intel
+#SBATCH --ntasks=24
+#SBATCH --ntasks-per-node=24
+#SBATCH --time=0-00:30:00
+#SBATCH --mem=2G
+
+mpirun vasp_gamma
+
+
+
+

@@ -1,0 +1,12 @@
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+             40003     intel pt4_t1b5  mr62688  R 13-01:37:41      1 c23
+             40004     intel pt4_t1b5  mr62688  R 13-01:37:03      1 c2
+             40005     intel pt4_t1b5  mr62688  R 13-01:34:36      1 c3
+             40006     intel pt4_t1b5  mr62688  R 13-01:31:45      1 c5
+             40011     intel pt4_t1b5  mr62688  R 13-00:59:17      1 c22
+             40014     intel  /pt5/h4  mr62688  R 11-02:33:14      1 c9
+             45935     intel    JIAAO    jiaao  R 1-13:10:14      1 c22
+             45936     intel    JIAAO    jiaao  R 1-13:09:03      1 c22
+             46452     intel AM__home  cs64398  R      14:22      1 c6
+             46453     intel AM__home  cs64398  R       2:01      1 c0
+             46454     intel AM__home  cs64398  R       2:01      1 c1

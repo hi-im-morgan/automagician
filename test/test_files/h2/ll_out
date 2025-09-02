@@ -1,0 +1,181 @@
+ running on   24 total cores
+ distrk:  each k-point on   24 cores,    1 groups
+ distr:  one band on    4 cores,    6 groups
+ vasp.6.3.0 20Jan22 (build Sep 10 2022 15:35:45) gamma-only                     
+  
+ POSCAR found :  1 types and       1 ions
+ scaLAPACK will be used
+ -----------------------------------------------------------------------------
+|                                                                             |
+|               ----> ADVICE to this user running VASP <----                  |
+|                                                                             |
+|     You have a (more or less) 'small supercell' and for smaller cells       |
+|     it is recommended to use the reciprocal-space projection scheme!        |
+|     The real-space optimization is not efficient for small cells and it     |
+|     is also less accurate ...                                               |
+|     Therefore, set LREAL=.FALSE. in the INCAR file.                         |
+|                                                                             |
+ -----------------------------------------------------------------------------
+
+ LDA part: xc-table for Pade appr. of Perdew
+ POSCAR found :  1 types and       1 ions
+ POSCAR, INCAR and KPOINTS ok, starting setup
+ FFT: planning ... GRIDC
+ FFT: planning ... GRID_SOFT
+ FFT: planning ... GRID
+ WAVECAR not read
+ entering main loop
+       N       E                     dE             d eps       ncg     rms          rms(c)
+DAV:   1     0.310292464805E+02    0.31029E+02   -0.25235E+03    24   0.331E+02
+DAV:   2     0.934804834783E-01   -0.30936E+02   -0.30874E+02    36   0.644E+01
+DAV:   3    -0.469103445899E+00   -0.56258E+00   -0.45958E+00    24   0.115E+01
+DAV:   4    -0.471532045921E+00   -0.24286E-02   -0.24282E-02    24   0.825E-01
+DAV:   5    -0.471561439100E+00   -0.29393E-04   -0.29394E-04    24   0.106E-01    0.286E+00
+DAV:   6    -0.102434110796E+01   -0.55278E+00   -0.78551E+00    24   0.600E+00    0.600E+00
+DAV:   7    -0.439816303624E+00    0.58452E+00   -0.96867E-01    24   0.387E+00    0.155E+00
+DAV:   8    -0.426555353687E+00    0.13261E-01   -0.27296E-02    24   0.781E-01    0.784E-01
+DAV:   9    -0.436849733270E+00   -0.10294E-01   -0.44128E-03    24   0.331E-01    0.150E+00
+DAV:  10    -0.426041284747E+00    0.10808E-01   -0.53241E-03    24   0.443E-01    0.548E-01
+DAV:  11    -0.424281795614E+00    0.17595E-02   -0.83471E-04    24   0.156E-01    0.277E-01
+DAV:  12    -0.424492242280E+00   -0.21045E-03   -0.23908E-04    24   0.119E-01    0.230E-01
+DAV:  13    -0.424018177832E+00    0.47406E-03   -0.37159E-04    24   0.105E-01    0.803E-02
+DAV:  14    -0.424176423931E+00   -0.15825E-03   -0.12159E-04    24   0.838E-02    0.120E-01
+DAV:  15    -0.424036369742E+00    0.14005E-03   -0.76225E-05    24   0.683E-02    0.597E-02
+DAV:  16    -0.424111517626E+00   -0.75148E-04   -0.61097E-05    24   0.561E-02
+   1 F= -.42411152E+00 E0= -.38691373E+00  d E =-.424112E+00
+ curvature:   0.00 expect dE= 0.000E+00 dE for cont linesearch  0.000E+00
+ trial: gam= 0.00000 g(F)=  0.299E-13 g(S)=  0.000E+00 ort = 0.000E+00 (trialstep = 0.100E+01)
+ search vector abs. value=  0.100E-09
+ reached required accuracy - stopping structural energy minimisation
+ running on   24 total cores
+ distrk:  each k-point on   24 cores,    1 groups
+ distr:  one band on    4 cores,    6 groups
+ vasp.6.3.0 20Jan22 (build Sep 10 2022 15:35:45) gamma-only                     
+  
+ POSCAR found type information on POSCAR C 
+ POSCAR found :  1 types and       1 ions
+ scaLAPACK will be used
+ WARNING: type information on POSCAR and POTCAR are incompatible
+ POTCAR overwrites the type information in POSCAR
+ typ   1 type information:  C  Pt
+ -----------------------------------------------------------------------------
+|                                                                             |
+|               ----> ADVICE to this user running VASP <----                  |
+|                                                                             |
+|     You have a (more or less) 'small supercell' and for smaller cells       |
+|     it is recommended to use the reciprocal-space projection scheme!        |
+|     The real-space optimization is not efficient for small cells and it     |
+|     is also less accurate ...                                               |
+|     Therefore, set LREAL=.FALSE. in the INCAR file.                         |
+|                                                                             |
+ -----------------------------------------------------------------------------
+
+ LDA part: xc-table for Pade appr. of Perdew
+ POSCAR found type information on POSCAR C 
+ POSCAR found :  1 types and       1 ions
+ POSCAR, INCAR and KPOINTS ok, starting setup
+ FFT: planning ... GRIDC
+ FFT: planning ... GRID_SOFT
+ FFT: planning ... GRID
+ WAVECAR not read
+ entering main loop
+       N       E                     dE             d eps       ncg     rms          rms(c)
+DAV:   1     0.564332481833E+02    0.56433E+02   -0.13968E+03    24   0.275E+02
+DAV:   2     0.328632863660E+01   -0.53147E+02   -0.53060E+02    48   0.306E+01
+DAV:   3    -0.385851838838E+00   -0.36722E+01   -0.34089E+01    24   0.220E+01
+DAV:   4    -0.430262453292E+00   -0.44411E-01   -0.44392E-01    24   0.318E+00
+DAV:   5    -0.431385099678E+00   -0.11226E-02   -0.11226E-02    24   0.494E-01    0.384E+00
+DAV:   6    -0.848767733371E+00   -0.41738E+00   -0.89978E+00    24   0.830E+00    0.676E+00
+DAV:   7    -0.203319731384E+00    0.64545E+00   -0.16408E+00    24   0.485E+00    0.705E-01
+DAV:   8    -0.207459029571E+00   -0.41393E-02   -0.70997E-03    24   0.381E-01    0.843E-01
+DAV:   9    -0.212740163459E+00   -0.52811E-02   -0.32156E-03    24   0.343E-01    0.104E+00
+DAV:  10    -0.205732680478E+00    0.70075E-02   -0.98533E-03    24   0.548E-01    0.314E-01
+DAV:  11    -0.205578156525E+00    0.15452E-03   -0.81707E-04    24   0.161E-01    0.108E-01
+DAV:  12    -0.205859316096E+00   -0.28116E-03   -0.11256E-04    24   0.487E-02    0.210E-01
+DAV:  13    -0.205614536598E+00    0.24478E-03   -0.33389E-04    24   0.949E-02    0.596E-02
+DAV:  14    -0.205754427222E+00   -0.13989E-03   -0.38882E-05    24   0.467E-02    0.189E-02
+DAV:  15    -0.205753889148E+00    0.53807E-06   -0.17751E-05    24   0.179E-02
+   1 F= -.20575389E+00 E0= -.17455628E+00  d E =-.205754E+00
+ curvature:   0.00 expect dE= 0.000E+00 dE for cont linesearch  0.000E+00
+ trial: gam= 0.00000 g(F)=  0.668E-11 g(S)=  0.000E+00 ort = 0.000E+00 (trialstep = 0.100E+01)
+ search vector abs. value=  0.107E-09
+ reached required accuracy - stopping structural energy minimisation
+ running on   24 total cores
+ distrk:  each k-point on   24 cores,    1 groups
+ distr:  one band on    4 cores,    6 groups
+ vasp.6.3.0 20Jan22 (build Sep 10 2022 15:35:45) gamma-only                     
+  
+ POSCAR found :  1 types and       2 ions
+ scaLAPACK will be used
+ -----------------------------------------------------------------------------
+|                                                                             |
+|               ----> ADVICE to this user running VASP <----                  |
+|                                                                             |
+|     You have a (more or less) 'small supercell' and for smaller cells       |
+|     it is recommended to use the reciprocal-space projection scheme!        |
+|     The real-space optimization is not efficient for small cells and it     |
+|     is also less accurate ...                                               |
+|     Therefore, set LREAL=.FALSE. in the INCAR file.                         |
+|                                                                             |
+ -----------------------------------------------------------------------------
+
+ LDA part: xc-table for Pade appr. of Perdew
+ POSCAR found :  1 types and       2 ions
+ POSCAR, INCAR and KPOINTS ok, starting setup
+ FFT: planning ... GRIDC
+ FFT: planning ... GRID_SOFT
+ FFT: planning ... GRID
+ WAVECAR not read
+ entering main loop
+       N       E                     dE             d eps       ncg     rms          rms(c)
+DAV:   1    -0.336970423654E+01   -0.33697E+01   -0.48120E+02    18   0.111E+02
+DAV:   2    -0.743349994496E+01   -0.40638E+01   -0.40638E+01    18   0.302E+01
+DAV:   3    -0.744611893626E+01   -0.12619E-01   -0.12619E-01    12   0.230E+00
+DAV:   4    -0.744619143648E+01   -0.72500E-04   -0.72500E-04    12   0.205E-01
+DAV:   5    -0.744619216033E+01   -0.72385E-06   -0.72260E-06    24   0.180E-02    0.444E+00
+DAV:   6    -0.698442965247E+01    0.46176E+00   -0.23211E-01    12   0.187E+00    0.242E+00
+DAV:   7    -0.673782045354E+01    0.24661E+00   -0.55853E-01    24   0.293E+00    0.302E-01
+DAV:   8    -0.674114125106E+01   -0.33208E-02   -0.70805E-03    12   0.292E-01    0.274E-01
+DAV:   9    -0.673691622963E+01    0.42250E-02   -0.65608E-03    12   0.306E-01    0.450E-02
+DAV:  10    -0.673940288596E+01   -0.24867E-02   -0.96016E-04    12   0.108E-01    0.217E-02
+DAV:  11    -0.673992206820E+01   -0.51918E-03   -0.44911E-05    18   0.274E-02    0.210E-02
+DAV:  12    -0.674173333604E+01   -0.18113E-02   -0.46371E-04    24   0.819E-02    0.115E-02
+DAV:  13    -0.674202873282E+01   -0.29540E-03   -0.65091E-05    12   0.299E-02    0.155E-02
+DAV:  14    -0.674207194033E+01   -0.43208E-04   -0.13266E-05    12   0.134E-02
+   1 F= -.67420719E+01 E0= -.67459372E+01  d E =-.674207E+01
+ curvature:   0.00 expect dE= 0.000E+00 dE for cont linesearch  0.000E+00
+ trial: gam= 0.00000 g(F)=  0.485E-02 g(S)=  0.000E+00 ort = 0.000E+00 (trialstep = 0.100E+01)
+ search vector abs. value=  0.485E-02
+ bond charge predicted
+       N       E                     dE             d eps       ncg     rms          rms(c)
+DAV:   1    -0.674527548114E+01   -0.32467E-02   -0.23305E-02    12   0.885E-01    0.798E-02
+DAV:   2    -0.674516183342E+01    0.11365E-03   -0.14704E-04    24   0.628E-02    0.428E-02
+DAV:   3    -0.674512838449E+01    0.33449E-04   -0.11957E-04    24   0.406E-02
+   2 F= -.67451284E+01 E0= -.67489937E+01  d E =-.305644E-02
+ trial-energy change:   -0.003056  1 .order   -0.003050   -0.004850   -0.001249
+ step:   1.3469(harm=  1.3469)  dis= 0.00652  next Energy=    -6.745338 (dE=-0.327E-02)
+ bond charge predicted
+       N       E                     dE             d eps       ncg     rms          rms(c)
+DAV:   1    -0.674537693037E+01   -0.21510E-03   -0.28358E-03    24   0.308E-01    0.279E-02
+DAV:   2    -0.674536182460E+01    0.15106E-04   -0.10905E-05    24   0.120E-02
+   3 F= -.67453618E+01 E0= -.67492271E+01  d E =-.328988E-02
+ curvature:  -0.67 expect dE=-0.190E-05 dE for cont linesearch -0.190E-05
+ ZBRENT: extrapolating
+ opt :   1.3827  next Energy=    -6.745364 (dE=-0.329E-02)
+ bond charge predicted
+       N       E                     dE             d eps       ncg     rms          rms(c)
+DAV:   1    -0.674535946444E+01    0.17466E-04   -0.14560E-05    24   0.265E-02    0.302E-03
+DAV:   2    -0.674536015351E+01   -0.68907E-06   -0.15839E-07    24   0.152E-03
+   4 F= -.67453602E+01 E0= -.67492254E+01  d E =-.328821E-02
+ curvature:  -0.74 expect dE=-0.388E-06 dE for cont linesearch -0.388E-06
+ ZBRENT: bracketing found
+ ZBRENT: interpolating
+ opt :   1.3719  next Energy=    -6.745360 (dE=-0.329E-02)
+ bond charge predicted
+       N       E                     dE             d eps       ncg     rms          rms(c)
+DAV:   1    -0.674536184177E+01   -0.23773E-05   -0.39248E-06    24   0.102E-02    0.976E-04
+DAV:   2    -0.674536216663E+01   -0.32486E-06   -0.14313E-08    24   0.443E-04
+   5 F= -.67453622E+01 E0= -.67492274E+01  d E =-.329023E-02
+ curvature:  -0.52 expect dE=-0.446E-07 dE for cont linesearch -0.446E-07
+ trial: gam= 0.00000 g(F)=  0.858E-07 g(S)=  0.000E+00 ort =-0.204E-04 (trialstep = 0.107E+01)
+ search vector abs. value=  0.859E-07

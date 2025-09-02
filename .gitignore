@@ -1,0 +1,8 @@
+.venv
+.mypy_cache
+__pycache__
+.pytest_cache
+automagician.egg-info
+dist
+.coverage
+.ruff_cache
