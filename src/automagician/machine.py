@@ -35,8 +35,8 @@ def get_machine_number() -> Machine:
     rm_login_node = re.compile(r"login[0-3]\.")
     machine_name = rm_login_node.sub("", socket.gethostname())
     return {
-        "fri.oden.utexas.edu": Machine.FRI_ODEN,
-        "halifax.oden.utexas.edu": Machine.HALIFAX_ODEN,
+        "fri.cm.utexas.edu": Machine.FRI_ODEN,
+        "halifax.cm.utexas.edu": Machine.HALIFAX_ODEN,
         "stampede2.tacc.utexas.edu": Machine.STAMPEDE2_TACC,
         "frontera.tacc.utexas.edu": Machine.FRONTERRA_TACC,
         "ls6.tacc.utexas.edu": Machine.LS6_TACC,
@@ -171,21 +171,21 @@ def write_lockfile(ssh_config: SSHConfig, machine: Machine) -> None:
 
 
 def get_subfile(machine: Machine) -> str:
-    #for now, we require that the file am.sub exists in the home directory for any user 
+    # for now, we require that the file am.sub exists in the home directory for any user
     return "am.sub"
-    #"""Gets the name of the currect subfile based on the machine, or none if machine is not valid
-    #Args:
+    # """Gets the name of the currect subfile based on the machine, or none if machine is not valid
+    # Args:
     #  machine: The machine to get the subfile for,
-    #Returns:
+    # Returns:
     #  str: The correct subfile for the machine
     #  If the machine is not a valid machine returns INVALID"""
-    #return {
+    # return {
     #    Machine.FRI_ODEN: "fri.sub",
     #    Machine.HALIFAX_ODEN: "halifax.sub",
     #    Machine.STAMPEDE2_TACC: "knl.mpi.slurm",
     #    Machine.FRONTERRA_TACC: "clx.mpi.slurm",
     #    Machine.LS6_TACC: "milan.mpi.slurm",
-    #}.get(machine, "INVALID")
+    # }.get(machine, "INVALID")
 
 
 def scp_put_dir(local: str, remote: str, ssh_config: SSHConfig) -> None:
