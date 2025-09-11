@@ -63,17 +63,29 @@ def wrap_up(job_directory: str) -> None:
     os.chdir(cwd)
 
 
-def give_certificate(job_directory: str) -> None:
+def give_certificate(job_directory: str) -> int:
     """Creates a convergence certificate in job_directory
 
     Args:
         job_directory: The directory to place the convergence certificate in
+
+    Return:
+        int: 1 if certificate already exists,
+             0 if certificate was created
     """
-    if os.path.isfile(constants.CONVERGENCE_CERTIFICATE_NAME):
-      continue
-    else:
-      with open(os.path.join(job_directory, constants.CONVERGENCE_CERTIFICATE_NAME), "x"):
-          pass
+    with open(
+            os.path.join(job_directory, constants.CONVERGENCE_CERTIFICATE_NAME), "x"
+    ) as cert:
+        return 0
+    return 1
+    #if os.path.isfile(constants.CONVERGENCE_CERTIFICATE_NAME):
+    #     continue
+    #else:
+        # create convergence certificate
+    #    with open(
+    #        os.path.join(job_directory, constants.CONVERGENCE_CERTIFICATE_NAME), "x"
+    #    ) as cert:
+    #        pass
 
 
 def sc_is_complete(sc_dir: str) -> bool:
