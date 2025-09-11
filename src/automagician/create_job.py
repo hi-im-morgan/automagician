@@ -30,7 +30,7 @@ def add_to_sub_queue(
         job_directory: The directory that should be submitted
         continue_past_limit: Says to raise a JobLimitError when submitting past
             the limit
-        limit: The ammount of jobs that automagician is allowed to submit
+        limit: The amount of jobs that automagician is allowed to submit
         sub_queue: A list showing the jobs that will be submitted
         machine: The machine to submit the jobs on
         hit_limit: If the limit has already been hit
