@@ -15,7 +15,7 @@ import automagician.small_functions as small_functions
 from automagician.classes import JobLimitError, JobStatus
 from automagician.database import Database
 
-#def constants_check(is_silent: bool, is_verbose: bool) -> logging.Logger:
+# def constants_check(is_silent: bool, is_verbose: bool) -> logging.Logger:
 #  """Checks the existence of files required, such as a working subfile am.sub
 #  """
 #  home = os.path.expanduser("~")
@@ -23,6 +23,7 @@ from automagician.database import Database
 #  if not os.path.isfile(file_path):
 #    print("The slurm subfile must be in home directory and named 'am.sub'!")
 #    exit()
+
 
 def set_up_logger(is_silent: bool, is_verbose: bool) -> logging.Logger:
     """Creates a logger and sets it up as the root logger
