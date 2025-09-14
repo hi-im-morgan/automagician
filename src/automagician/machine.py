@@ -58,10 +58,10 @@ def ssh_scp_init(
       no_ssh is set to true, iff fabric could not be imported, balance was not set, or fri_halifax keys did not work
     """
     # unused = 0
-
+    # Checks for balance in options
     if not balance:
         return SSHConfig(config="NoSSH")
-
+    # Checks if machine is FRI or Halifax
     if machine < 2:
         hostname = get_machine_name(Machine(1 - machine))
         if no_fabric:
