@@ -73,11 +73,13 @@ def give_certificate(job_directory: str) -> int:
         int: 1 if certificate already exists,
              0 if certificate was created
     """
-    with open(
+    try:
+        open(
             os.path.join(job_directory, constants.CONVERGENCE_CERTIFICATE_NAME), "x"
-    ) as cert:
+        )
         return 0
-    return 1
+    except FileExistsError:
+        return 1
     #if os.path.isfile(constants.CONVERGENCE_CERTIFICATE_NAME):
     #     continue
     #else:
