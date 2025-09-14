@@ -172,20 +172,20 @@ def write_lockfile(ssh_config: SSHConfig, machine: Machine) -> None:
 
 def get_subfile(machine: Machine) -> str:
     # for now, we require that the file am.sub exists in the home directory for any user
-    return "am.sub"
+    # return "am.sub"
     # """Gets the name of the currect subfile based on the machine, or none if machine is not valid
     # Args:
     #  machine: The machine to get the subfile for,
     # Returns:
     #  str: The correct subfile for the machine
     #  If the machine is not a valid machine returns INVALID"""
-    # return {
-    #    Machine.FRI_ODEN: "fri.sub",
-    #    Machine.HALIFAX_ODEN: "halifax.sub",
-    #    Machine.STAMPEDE2_TACC: "knl.mpi.slurm",
-    #    Machine.FRONTERRA_TACC: "clx.mpi.slurm",
-    #    Machine.LS6_TACC: "milan.mpi.slurm",
-    # }.get(machine, "INVALID")
+    return {
+       Machine.FRI_ODEN: "fri.sub",
+       Machine.HALIFAX_ODEN: "halifax.sub",
+       Machine.STAMPEDE2_TACC: "knl.mpi.slurm",
+       Machine.FRONTERRA_TACC: "clx.mpi.slurm",
+       Machine.LS6_TACC: "milan.mpi.slurm",
+    }.get(machine, "INVALID")
 
 
 def scp_put_dir(local: str, remote: str, ssh_config: SSHConfig) -> None:
