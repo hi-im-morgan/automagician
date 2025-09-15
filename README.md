@@ -13,6 +13,6 @@ Running this script with `python automagician` or other similar command will not
 ## Generating automagician build file
 * run `build.sh build` (note that build must be installed)
 ## Installing from binary
-* run `pip install {path_to_binary}` (To grab the version Joseph is develiping run `pip install /home/jw53959/test_git_repo/dist/home/jw53959/test_git_repo`)
+* run `pip install {path_to_binary}`
 
 
