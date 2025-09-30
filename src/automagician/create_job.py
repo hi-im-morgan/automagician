@@ -9,14 +9,14 @@ from automagician.classes import JobLimitError, Machine
 
 
 def add_to_sub_queue(
-    job_directory: str,
-    continue_past_limit: bool,
-    limit: int,
-    sub_queue: List[str],
-    machine: Machine,
-    hit_limit: bool,
+        job_directory: str,
+        continue_past_limit: bool,
+        limit: int,
+        sub_queue: List[str],
+        machine: Machine,
+        hit_limit: bool,
 ) -> bool:
-    """Adds job_directoy to sub_quene. and updates the job name
+    """Adds job_directoy to sub_queue. and updates the job name
 
     job_directory MUST have a trailing '/'
 
@@ -24,7 +24,7 @@ def add_to_sub_queue(
 
     If hit_limit is true, is a no-op
 
-    If would cause to go past the limit would raise a JobLimitError
+    If submitting would go past the limit, raise a JobLimitError
 
     Args:
         job_directory: The directory that should be submitted
@@ -55,12 +55,12 @@ def add_to_sub_queue(
 
 
 def create_dos_from_sc(
-    job_directory: str,
-    continue_past_limit: bool,
-    limit: int,
-    sub_queue: List[str],
-    machine: Machine,
-    hit_limit: bool,
+        job_directory: str,
+        continue_past_limit: bool,
+        limit: int,
+        sub_queue: List[str],
+        machine: Machine,
+        hit_limit: bool,
 ) -> None:
     """Creates a properly formed dos directory from sc, setting up INCAR to be
     correct, and then submits the job
@@ -104,36 +104,39 @@ def create_dos_from_sc(
         machine=machine,
         hit_limit=hit_limit,
     )
-
+def copy_inputs(subfile,
+                job_directory: str,
+                dir) -> None:
+    os.mkdir(dir)
+    shutil.copy(os.path.join(job_directory, subfile), dir)
+    shutil.copy(os.path.join(job_directory, "KPOINTS"), dir)
+    shutil.copy(os.path.join(job_directory, "POTCAR"), dir)
+    shutil.copy(os.path.join(job_directory, "INCAR"), dir)
+    if os.path.exists(os.path.join(job_directory, "CONTCAR")):
+        shutil.copy(os.path.join(job_directory, "CONTCAR"), dir)
+    else:
+        shutil.copy(os.path.join(job_directory, "POSCAR"), dir)
 
 # Create a self-consistent calculation to get WAVECAR for later use
 def create_wav(
-    job_directory: str,
-    continue_past_limit: bool,
-    limit: int,
-    sub_queue: List[str],
-    machine: Machine,
-    hit_limit: bool,
+        job_directory: str,
+        continue_past_limit: bool,
+        limit: int,
+        sub_queue: List[str],
+        machine: Machine,
+        hit_limit: bool,
 ) -> None:
-    """Wakes a WAV direcotry, and copies INCAR, KPOINTS, POTCAR, and
+    """Wakes a WAV directory, and copies INCAR, KPOINTS, POTCAR, and
     CONTCAR, or POSCAR if CONTCAR does not exist to this new directory
 
-    Sets up the INCAR to be that of a WAV calculatoron. Submits the job"""
+    Sets up the INCAR to be that of a WAV calculation. Submits the job"""
     subfile = machine_file.get_subfile(machine)
     wav_dir = os.path.normpath(os.path.join(job_directory, "../wav"))
-    os.mkdir(wav_dir)
-    shutil.copy(os.path.join(job_directory, subfile), wav_dir)
-    shutil.copy(os.path.join(job_directory, "KPOINTS"), wav_dir)
-    shutil.copy(os.path.join(job_directory, "POTCAR"), wav_dir)
-    shutil.copy(os.path.join(job_directory, "INCAR"), wav_dir)
+    # copy over the inputs
+    copy_inputs(subfile, job_directory, wav_dir)
     update_job.set_incar_tags(
         os.path.join(wav_dir, "INCAR"), {"IBRION": "-1", "LWAVE": ".TRUE.", "NSW": "0"}
     )
-
-    if os.path.exists(os.path.join(job_directory, "CONTCAR")):
-        shutil.copy(os.path.join(job_directory, "CONTCAR"), wav_dir)
-    else:
-        shutil.copy(os.path.join(job_directory, "POSCAR"), wav_dir)
 
     add_to_sub_queue(
         job_directory=wav_dir,
@@ -146,14 +149,14 @@ def create_wav(
 
 
 def create_sc(
-    job_directory: str,
-    continue_past_limit: bool,
-    limit: int,
-    sub_queue: List[str],
-    machine: Machine,
-    hit_limit: bool,
+        job_directory: str,
+        continue_past_limit: bool,
+        limit: int,
+        sub_queue: List[str],
+        machine: Machine,
+        hit_limit: bool,
 ) -> None:
-    """Creates a SC directory setting INCAR approtately. Submits the job
+    """Creates an SC directory and sets INCAR. Submits the job
 
     IBRION = -1
     LCHARGE  = .TRUE.
@@ -162,24 +165,18 @@ def create_sc(
       job_directory (str): the path to the directory the job is located in
     Changes:
       Submits the job in the job_directory
-      Creates a sc subdirectory inside jobdirectory that is set up for a job"""
+      Creates a sc subdirectory inside job directory that is set up for a job"""
     logger = logging.getLogger()
     subfile = machine_file.get_subfile(machine)
     logger.debug("creating sc directory")
     sc_dir = os.path.normpath(os.path.join(job_directory, "../sc"))
-    os.mkdir(sc_dir)
-    shutil.copy(os.path.join(job_directory, subfile), sc_dir)
-    shutil.copy(os.path.join(job_directory, "KPOINTS"), sc_dir)
-    shutil.copy(os.path.join(job_directory, "POTCAR"), sc_dir)
-    shutil.copy(os.path.join(job_directory, "INCAR"), sc_dir)
+
+    # copy kpoints, incar, potcar, subfile over
+    copy_inputs(subfile, job_directory, sc_dir)
+
     update_job.set_incar_tags(
         os.path.join(sc_dir, "INCAR"), {"IBRION": "-1", "LCHARGE": ".TRUE.", "NSW": "0"}
     )
-
-    if os.path.exists(os.path.join(job_directory, "CONTCAR")):
-        shutil.copy(os.path.join(job_directory, "CONTCAR"), sc_dir)
-    else:
-        shutil.copy(os.path.join(job_directory, "POSCAR"), sc_dir)
 
     add_to_sub_queue(
         job_directory=sc_dir,

@@ -15,6 +15,7 @@ from automagician.classes import DosJob, JobStatus, Machine, OptJob, WavJob
 try:
     from automagician.classes import SshScp
 
+
     def scp_get_dir(remote: str, local: str, ssh_scp: SshScp) -> None:
         """Puts files inside the remote directory to the local directory
 
@@ -23,7 +24,7 @@ try:
         local (str): the directory on the local machine to transfer files to
         """
         for f in ssh_scp.ssh.run(
-            "cd " + remote + "; find . -type f | cut -c 2-"
+                "cd " + remote + "; find . -type f | cut -c 2-"
         ).stdout.split("\n"):
             if len(f) < 1:
                 continue
@@ -34,11 +35,11 @@ except ImportError:
 
 
 def add_preliminary_results(
-    job_directory: str,
-    step: int,
-    force: float,
-    energy: float,
-    preliminary_results: TextIO,
+        job_directory: str,
+        step: int,
+        force: float,
+        energy: float,
+        preliminary_results: TextIO,
 ) -> None:
     """Adds the job directory, step number, force, and energy to the file in preliminary_results"""
     preliminary_results.write(str(job_directory) + "\n")
@@ -59,13 +60,20 @@ def log_error(job_directory: str, home: str) -> None:
     Tests
       TODO: Medium priority
         Simple, something not critical"""
-    error_log = open(os.path.join(home, "error_log.dat"), "a+")
+    # error_log = open(os.path.join(home, "error_log.dat"), "a+")
     # potentially create an error buffer and write the errors all at once in the end? potentially a bad idea in case of a crash though/not sure if the speedup would be non-negligible
-    for error_message in get_error_message(job_directory):
-        error_log.write(
-            f"{str(datetime.datetime.now())} {job_directory} {error_message} \n"
-        )
-    error_log.close()
+    # for error_message in get_error_message(job_directory):
+    #     error_log.write(
+    #         f"{str(datetime.datetime.now())} {job_directory} {error_message} \n"
+    #     )
+    # error_log.close()
+
+    # TODO: verify that this change doesn't
+    with open(os.path.join(home, "error_log.dat"), "a+") as error_log:
+        for error_message in get_error_message(job_directory):
+            error_log.write(
+                f"{str(datetime.datetime.now())} {job_directory} {error_message} \n"
+            )
 
 
 def get_error_message(job_directory: str) -> list[str]:
@@ -88,7 +96,7 @@ def get_error_message(job_directory: str) -> list[str]:
 
 
 def fix_error(
-    job_directory: str,
+        job_directory: str,
 ) -> bool:
     """Attempts to fix the error in job_direcory. Fixes ZBRINT, and number of potentials incompatable.
     Args:
@@ -108,8 +116,8 @@ def fix_error(
             finish_job.wrap_up(job_directory)
             return True
         elif (
-            "number of potentials on File POTCAR incompatible with number"
-            in error_message
+                "number of potentials on File POTCAR incompatible with number"
+                in error_message
         ):
             cwd = os.getcwd()
             os.chdir(job_directory)
@@ -208,10 +216,10 @@ def get_opt_dir(job_dir: str) -> str:
 
 
 def switch_subfile(
-    job_dir: str,
-    new_sub: str,
-    subfile: str,
-    machine: Machine,
+        job_dir: str,
+        new_sub: str,
+        subfile: str,
+        machine: Machine,
 ) -> None:
     """Copies the subfile into new_sub and updates the job_name of new_sub
 
@@ -238,12 +246,12 @@ def switch_subfile(
 
 
 def set_status_for_newly_submitted_job(
-    job_dir: str,
-    job_machine: Machine,
-    dos_jobs: Dict[str, DosJob],
-    wav_jobs: Dict[str, WavJob],
-    opt_jobs: Dict[str, OptJob],
-    error: bool,
+        job_dir: str,
+        job_machine: Machine,
+        dos_jobs: Dict[str, DosJob],
+        wav_jobs: Dict[str, WavJob],
+        opt_jobs: Dict[str, OptJob],
+        error: bool,
 ) -> None:
     """Sets the job status to that of special jobs that no longer need to be optoomised
 

@@ -44,7 +44,7 @@ def get_machine_number() -> Machine:
 
 
 def ssh_scp_init(
-    machine: Machine, home_dir: str, balance: bool, logger: logging.Logger
+        machine: Machine, home_dir: str, balance: bool, logger: logging.Logger
 ) -> SSHConfig:
     """Initalizes ssh and sets the no_ssh varable appropately
 
@@ -130,7 +130,7 @@ def write_lockfile(ssh_config: SSHConfig, machine: Machine) -> None:
 
     if machine < 2 and ssh_config.config != "NoSSH":
         if not ssh_config.config.ssh.run(
-            "test -d " + constants.LOCK_DIR, warn=True, hide=True
+                "test -d " + constants.LOCK_DIR, warn=True, hide=True
         ).ok:
             ssh_config.config.ssh.run("mkdir -p " + constants.LOCK_DIR)
 
@@ -145,11 +145,11 @@ def write_lockfile(ssh_config: SSHConfig, machine: Machine) -> None:
         )
         exit()
     elif (
-        machine < 2
-        and ssh_config.config != "NoSSH"
-        and ssh_config.config.ssh.run(
-            "test -e " + constants.LOCK_FILE, warn=True, hide=True
-        ).ok
+            machine < 2
+            and ssh_config.config != "NoSSH"
+            and ssh_config.config.ssh.run(
+        "test -e " + constants.LOCK_FILE, warn=True, hide=True
+    ).ok
     ):
         logger.error(
             "it looks like you already have a remote instance of automagician running--please wait for it to finish. thank you! :)",
@@ -180,11 +180,11 @@ def get_subfile(machine: Machine) -> str:
     #  str: The correct subfile for the machine
     #  If the machine is not a valid machine returns INVALID"""
     return {
-       Machine.FRI_ODEN: "fri.sub",
-       Machine.HALIFAX_ODEN: "halifax.sub",
-       Machine.STAMPEDE2_TACC: "knl.mpi.slurm",
-       Machine.FRONTERRA_TACC: "clx.mpi.slurm",
-       Machine.LS6_TACC: "milan.mpi.slurm",
+        Machine.FRI_ODEN: "fri.sub",
+        Machine.HALIFAX_ODEN: "halifax.sub",
+        Machine.STAMPEDE2_TACC: "knl.mpi.slurm",
+        Machine.FRONTERRA_TACC: "clx.mpi.slurm",
+        Machine.LS6_TACC: "milan.mpi.slurm",
     }.get(machine, "INVALID")
 
 
@@ -200,9 +200,9 @@ def scp_put_dir(local: str, remote: str, ssh_config: SSHConfig) -> None:
     cwd = os.getcwd()
     os.chdir(local)
     for f in (
-        subprocess.run(["find", ".", "-type", "f"], capture_output=True)
-        .stdout.decode("utf-8")
-        .split("\n")
+            subprocess.run(["find", ".", "-type", "f"], capture_output=True)
+                    .stdout.decode("utf-8")
+                    .split("\n")
     ):
         if len(f) < 1:
             continue

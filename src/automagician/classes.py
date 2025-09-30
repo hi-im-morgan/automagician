@@ -5,10 +5,12 @@ from typing import Literal
 try:
     import fabric  # type: ignore
 
+
     @dataclass
     class SshScp:
         ssh: fabric.connection.Connection
         scp: fabric.transfer.Transfer
+
 
     @dataclass
     class SSHConfig:
@@ -90,7 +92,7 @@ class DosJob:
 class WavJob:
     """A job ran specifically to obtain a WAVECAR
     opt_id
-      The id of the optomization job this is connected to
+      The id of the optimization job this is connected to
     wav_status
       The status of the job
       0 = done
