@@ -525,54 +525,54 @@ def test_gone_job_check(tmp_path):
     database = Database(os.path.join(tmp_path, "test_db"))
     os.mkdir(os.path.join(tmp_path, "opt_job_1"))
     database.add_opt_job_to_db(
-        OptJob(JobStatus.INCOMPLETE, Machine.FRI_ODEN, Machine.FRI_ODEN),
+        OptJob(JobStatus.INCOMPLETE, Machine.FRI, Machine.FRI),
         os.path.join(tmp_path, "opt_job_1"),
     )
     database.add_opt_job_to_db(
-        OptJob(JobStatus.CONVERGED, Machine.FRI_ODEN, Machine.FRI_ODEN),
+        OptJob(JobStatus.CONVERGED, Machine.FRI, Machine.FRI),
         os.path.join(tmp_path, "opt_job_2"),
     )
     database.add_opt_job_to_db(
-        OptJob(JobStatus.ERROR, Machine.FRI_ODEN, Machine.FRI_ODEN),
+        OptJob(JobStatus.ERROR, Machine.FRI, Machine.FRI),
         os.path.join(tmp_path, "opt_job_3"),
     )
     database.add_opt_job_to_db(
-        OptJob(JobStatus.NOT_FOUND, Machine.FRI_ODEN, Machine.FRI_ODEN),
+        OptJob(JobStatus.NOT_FOUND, Machine.FRI, Machine.FRI),
         os.path.join(tmp_path, "opt_job_4"),
     )
     database.add_opt_job_to_db(
-        OptJob(JobStatus.RUNNING, Machine.FRI_ODEN, Machine.FRI_ODEN),
+        OptJob(JobStatus.RUNNING, Machine.FRI, Machine.FRI),
         os.path.join(tmp_path, "opt_job_5"),
     )
     database.add_opt_job_to_db(
-        OptJob(JobStatus.INCOMPLETE, Machine.FRI_ODEN, Machine.FRI_ODEN),
+        OptJob(JobStatus.INCOMPLETE, Machine.FRI, Machine.FRI),
         os.path.join(tmp_path, "opt_job_6"),
     )
     opt_jobs = database.get_opt_jobs()
     gone_jobs = gone_job_check(database, opt_jobs)
     assert opt_jobs == {
         os.path.join(tmp_path, "opt_job_1"): OptJob(
-            JobStatus.INCOMPLETE, Machine.FRI_ODEN, Machine.FRI_ODEN
+            JobStatus.INCOMPLETE, Machine.FRI, Machine.FRI
         ),
         os.path.join(tmp_path, "opt_job_2"): OptJob(
-            JobStatus.CONVERGED, Machine.FRI_ODEN, Machine.FRI_ODEN
+            JobStatus.CONVERGED, Machine.FRI, Machine.FRI
         ),
         os.path.join(tmp_path, "opt_job_3"): OptJob(
-            JobStatus.ERROR, Machine.FRI_ODEN, Machine.FRI_ODEN
+            JobStatus.ERROR, Machine.FRI, Machine.FRI
         ),
         os.path.join(tmp_path, "opt_job_4"): OptJob(
-            JobStatus.NOT_FOUND, Machine.FRI_ODEN, Machine.FRI_ODEN
+            JobStatus.NOT_FOUND, Machine.FRI, Machine.FRI
         ),
         os.path.join(tmp_path, "opt_job_5"): OptJob(
-            JobStatus.RUNNING, Machine.FRI_ODEN, Machine.FRI_ODEN
+            JobStatus.RUNNING, Machine.FRI, Machine.FRI
         ),
     }
     assert gone_jobs == {
         os.path.join(tmp_path, "opt_job_6"): GoneJob(
             os.path.join(tmp_path, "opt_job_6"),
             JobStatus.INCOMPLETE,
-            Machine.FRI_ODEN,
-            Machine.FRI_ODEN,
+            Machine.FRI,
+            Machine.FRI,
         )
     }
 
@@ -616,7 +616,7 @@ def test_process_dos_no_dos(tmp_path):
     dt_epoch = time.time()
     CHGCAR_path = os.path.join(job_dir, "CHGCAR")
     os.utime(CHGCAR_path, (dt_epoch - 120, dt_epoch - 120))
-    DOSCAR_path = os.path.join(job_dir, "DOSCAR")
+    DOSCAR_path = os.path.join(job_dir, "dos", "DOSCAR")
     os.utime(DOSCAR_path, (dt_epoch - 120, dt_epoch - 120))
     process_dos(
         job_directory=job_dir,

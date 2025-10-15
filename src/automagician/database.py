@@ -82,10 +82,10 @@ class Database:
         logger = logging.getLogger()
         self.db.execute("delete from opt_jobs where dir = '" + cwd + "'")
         self.db.connection.commit()
-        logger.info(cwd, " is deleted from opt_jobs")
+        logger.info("%s is deleted from opt_jobs", cwd)
 
     def write_plain_text_db(self, file: str) -> None:
-        """Prints out the text DB to the file in file. Overwrites content previosly present
+        """Prints out the text DB to the file in file. Overwrites content previously present
 
         Args:
             file: the path to the file to write the plain text db to"""
@@ -153,7 +153,7 @@ class Database:
         """Returns the wav_jobs in this database.
 
         Returns:
-            A dictionary where the keys are the job directoties, and the values
+            A dictionary where the keys are the job directories, and the values
             are the gone jobs associated with said job directory"""
         gone_jobs: Dict[str, GoneJob] = {}
         for job in self.db.execute("select * from gone_jobs"):

@@ -787,7 +787,7 @@ def submit_queue(
     subfile = machine_file.get_subfile(machine)
     logger.debug("starting queue submit")
     cwd = os.getcwd()
-    if machine is Machine.FRI_ODEN or machine is Machine.HALIFAX_ODEN:  # fri-halifax
+    if machine is Machine.FRI or machine is Machine.HALIFAX:  # fri-halifax
         other_subfile = machine_file.get_subfile(Machine(1 - machine))
 
         this_machine_job_count = len(
@@ -822,7 +822,7 @@ def submit_queue(
             update_job.switch_subfile(job_dir, other_subfile, subfile, machine)
             new_loc = home + constants.AUTOMAGIC_REMOTE_DIR + job_dir
             machine_file.scp_put_dir(job_dir, new_loc, ssh_config)
-            ssh_config.ssh.run("cd " + new_loc + " && qsub " + other_subfile)  # type: ignore
+            ssh_config.ssh.run("cd " + new_loc + " && sbatch " + other_subfile)  # type: ignore
             update_job.set_status_for_newly_submitted_job(
                 job_dir, Machine(1 - machine), dos_jobs, wav_jobs, opt_jobs, False
             )

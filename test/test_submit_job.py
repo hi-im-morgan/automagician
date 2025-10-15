@@ -35,7 +35,7 @@ def test_submit_queue_no_jobs(monkeypatch, tmp_path):
     wav_jobs = {}
     cwd = os.getcwd()
     submit_queue(
-        machine=Machine.FRI_ODEN,
+        machine=Machine.FRI,
         balance=False,
         ssh_config=config,
         sub_queue=sub_queue,
@@ -66,7 +66,7 @@ def test_submit_queue_1_job(monkeypatch, tmp_path):
     wav_jobs = {}
     cwd = os.getcwd()
     submit_queue(
-        machine=Machine.FRI_ODEN,
+        machine=Machine.FRI,
         balance=False,
         ssh_config=config,
         sub_queue=sub_queue,
@@ -106,7 +106,7 @@ def test_submit_queue_2_jobs(monkeypatch, tmp_path):
     wav_jobs = {}
     cwd = os.getcwd()
     submit_queue(
-        machine=Machine.FRI_ODEN,
+        machine=Machine.FRI,
         balance=False,
         ssh_config=config,
         sub_queue=sub_queue,
@@ -156,7 +156,7 @@ def test_submit_queue_2_jobs_sbatch_error(monkeypatch, tmp_path):
     wav_jobs = {}
     cwd = os.getcwd()
     submit_queue(
-        machine=Machine.FRI_ODEN,
+        machine=Machine.FRI,
         balance=False,
         ssh_config=config,
         sub_queue=sub_queue,
@@ -202,7 +202,7 @@ def test_submit_queue_2_jobs_limit_1(monkeypatch, tmp_path):
     wav_jobs = {}
     cwd = os.getcwd()
     submit_queue(
-        machine=Machine.FRI_ODEN,
+        machine=Machine.FRI,
         balance=False,
         ssh_config=config,
         sub_queue=sub_queue,
@@ -240,7 +240,7 @@ def test_submit_queue_2_jobs_acutally_submitted_hit_limit(monkeypatch, tmp_path)
     wav_jobs = {}
     cwd = os.getcwd()
     submit_queue(
-        machine=Machine.FRI_ODEN,
+        machine=Machine.FRI,
         balance=False,
         ssh_config=config,
         sub_queue=sub_queue,

@@ -4,7 +4,7 @@ LOCK_FILE = f"/tmp/automagician/{os.environ['USER']}-lock"
 LOCK_DIR = "/tmp/automagician"
 DB_NAME = "automagician.db"
 AUTOMAGIC_REMOTE_DIR = "/automagician_jobs"
-DEFAULT_SUBFILE = "~/am.sub"
+DEFAULT_SUBFILE = "~/fri.sub"
 DEFAULT_SUBFILE_PATH_FRI_HALIFAX = (
     "/home/kg33564/automagician-permanent/subfile-archive"
 )

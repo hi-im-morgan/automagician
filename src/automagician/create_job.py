@@ -80,12 +80,15 @@ def create_dos_from_sc(
     """
     subfile = machine_file.get_subfile(machine)
     dos_dir = os.path.normpath(os.path.join(job_directory, "../dos"))
-    os.mkdir(dos_dir)
-    shutil.copy(os.path.join(job_directory, subfile), dos_dir)
-    shutil.copy(os.path.join(job_directory, "KPOINTS"), dos_dir)
-    shutil.copy(os.path.join(job_directory, "POTCAR"), dos_dir)
-    shutil.copy(os.path.join(job_directory, "INCAR"), dos_dir)
-    shutil.copy(os.path.join(job_directory, "CHGCAR"), dos_dir)
+    # os.mkdir(dos_dir)
+    # shutil.copy(os.path.join(job_directory, subfile), dos_dir)
+    # shutil.copy(os.path.join(job_directory, "KPOINTS"), dos_dir)
+    # shutil.copy(os.path.join(job_directory, "POTCAR"), dos_dir)
+    # shutil.copy(os.path.join(job_directory, "INCAR"), dos_dir)
+    # shutil.copy(os.path.join(job_directory, "CHGCAR"), dos_dir)
+
+    # copy over the inputs
+    copy_inputs(subfile, job_directory, dos_dir)
 
     if os.path.exists(os.path.join(job_directory, "CONTCAR")):
         shutil.copy(os.path.join(job_directory, "CONTCAR"), dos_dir)
@@ -104,18 +107,22 @@ def create_dos_from_sc(
         machine=machine,
         hit_limit=hit_limit,
     )
+
+
 def copy_inputs(subfile,
                 job_directory: str,
-                dir) -> None:
-    os.mkdir(dir)
-    shutil.copy(os.path.join(job_directory, subfile), dir)
-    shutil.copy(os.path.join(job_directory, "KPOINTS"), dir)
-    shutil.copy(os.path.join(job_directory, "POTCAR"), dir)
-    shutil.copy(os.path.join(job_directory, "INCAR"), dir)
+                directory: str) -> None:
+    os.mkdir(directory)
+    shutil.copy(os.path.join(job_directory, subfile), directory)
+    shutil.copy(os.path.join(job_directory, "KPOINTS"), directory)
+    shutil.copy(os.path.join(job_directory, "POTCAR"), directory)
+    shutil.copy(os.path.join(job_directory, "INCAR"), directory)
+    if os.path.exists(os.path.join(job_directory, "CHGCAR")):
+        shutil.copy(os.path.join(job_directory, "CHGCAR"), directory)
     if os.path.exists(os.path.join(job_directory, "CONTCAR")):
-        shutil.copy(os.path.join(job_directory, "CONTCAR"), dir)
+        shutil.copy(os.path.join(job_directory, "CONTCAR"), directory)
     else:
-        shutil.copy(os.path.join(job_directory, "POSCAR"), dir)
+        shutil.copy(os.path.join(job_directory, "POSCAR"), directory)
 
 # Create a self-consistent calculation to get WAVECAR for later use
 def create_wav(

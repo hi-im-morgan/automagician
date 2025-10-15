@@ -40,10 +40,10 @@ class JobStatus(IntEnum):
 
 
 class Machine(IntEnum):
-    FRI_ODEN = 0
-    HALIFAX_ODEN = 1
+    FRI = 0
+    HALIFAX = 1
     STAMPEDE2_TACC = 2
-    FRONTERRA_TACC = 3
+    FRONTERA_TACC = 3
     LS6_TACC = 4
     UNKNOWN = -1
 

@@ -12,37 +12,37 @@ from automagician.create_job import (
 )
 
 
-def test_qsub_hit_limit(tmp_path):
+def test_sub_hit_limit(tmp_path):
     subfile_path = str(tmp_path) + "/fri.sub"
     open(subfile_path, "w")
-    sub_quene = []
+    jobs = []
     with pytest.raises(JobLimitError):
         add_to_sub_queue(
             job_directory=tmp_path,
             continue_past_limit=False,
             limit=1,
-            sub_queue=sub_quene,
+            sub_queue=jobs,
             machine=0,
             hit_limit=False,
         )
 
-    assert tmp_path in sub_quene
+    assert tmp_path in jobs
 
 
-def test_qsub_hit_limit_allowed(tmp_path):
+def test_sub_hit_limit_allowed(tmp_path):
     subfile_path = str(tmp_path) + "/fri.sub"
     open(subfile_path, "w")
-    sub_quene = []
+    jobs = []
     hit_limit = add_to_sub_queue(
         job_directory=tmp_path,
         continue_past_limit=True,
         limit=1,
-        sub_queue=sub_quene,
+        sub_queue=jobs,
         machine=0,
         hit_limit=False,
     )
     assert hit_limit is True
-    assert tmp_path in sub_quene
+    assert tmp_path in jobs
 
 
 def test_qsub_hit_limit_allowed_multiple_paths(tmp_path):
@@ -61,47 +61,47 @@ def test_qsub_hit_limit_allowed_multiple_paths(tmp_path):
     assert sub_quene == ["/tmp/hi", tmp_path]
 
 
-def test_qsub_already_hit_limit(tmp_path):
+def test_sub_already_hit_limit(tmp_path):
     subfile_path = str(tmp_path) + "/fri.sub"
     open(subfile_path, "w")
-    sub_quene = []
+    jobs = []
     hit_limit = add_to_sub_queue(
         job_directory=tmp_path,
         continue_past_limit=True,
         limit=1000,
-        sub_queue=sub_quene,
+        sub_queue=jobs,
         machine=0,
         hit_limit=True,
     )
     assert hit_limit is True
-    assert tmp_path not in sub_quene
+    assert tmp_path not in jobs
 
 
-def test_qsub_hit_limit_allowed_did_not_hit(tmp_path):
+def test_sub_hit_limit_allowed_did_not_hit(tmp_path):
     subfile_path = str(tmp_path) + "/fri.sub"
     open(subfile_path, "w")
-    sub_quene = []
+    jobs = []
     hit_limit = add_to_sub_queue(
         job_directory=tmp_path,
         continue_past_limit=True,
         limit=2,
-        sub_queue=sub_quene,
+        sub_queue=jobs,
         machine=0,
         hit_limit=False,
     )
     assert hit_limit is False
-    assert tmp_path in sub_quene
+    assert tmp_path in jobs
 
 
 def test_create_dos_from_sc_poscar(tmp_path):
-    sub_quene = []
+    jobs = []
     old_cwd = os.getcwd()
     sc_job_path = os.path.join(tmp_path, "sc")
     dos_job_path = os.path.join(tmp_path, "dos")
     shutil.copytree("test/test_files/h2_sc", sc_job_path)
     os.remove(os.path.join(sc_job_path, "CONTCAR"))
 
-    create_dos_from_sc(sc_job_path, False, 2, sub_quene, 0, False)
+    create_dos_from_sc(sc_job_path, False, 2, jobs, 0, False)
     new_cwd = os.getcwd()
 
     assert old_cwd == new_cwd
@@ -115,8 +115,8 @@ def test_create_dos_from_sc_poscar(tmp_path):
     incar_text = incar.read()
     assert "ICHARGE=11" in incar_text
     assert "LORBIT=11" in incar_text
-    expected_sub_quene = [dos_job_path]
-    assert sub_quene == expected_sub_quene
+    expected_jobs = [dos_job_path]
+    assert jobs == expected_jobs
 
 
 def test_create_dos_from_sc_contcar(tmp_path):

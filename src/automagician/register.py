@@ -22,13 +22,13 @@ def register(
         sub_queue: List[str],
         hit_limit: bool,
 ) -> None:
-    """Adds jobs to opt_jobs, dos_jobs, and wav_jobs, and their assicated quenes.
+    """Adds jobs to opt_jobs, dos_jobs, and wav_jobs, and their associated queues.
 
     This is based on the current working directory
 
     ini, fin, dos, wav, and sc are reserved
 
-    Processes the quenes
+    Processes the queues
 
     Args:
       None
