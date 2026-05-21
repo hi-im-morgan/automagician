@@ -7,3 +7,4 @@ dist
 .coverage
 .ruff_cache
 docs/_build/
+.claude/
