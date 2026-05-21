@@ -9,9 +9,7 @@ $ ./build.sh create
 $ source .venv/bin/activate
 ```
 
-2. Build automagician \
-*Note: you must have `build` installed.* \
-*Install it with `python -m pip install build`*
+2. Build automagician
 ```
 $ ./build.sh build
 ```
@@ -27,8 +25,8 @@ $ automagician
 * Run tests using `./build.sh test`
 * Run static analyzers/formatters using `./build.sh lint`
 ## Generating automagician build file
-* run `./build.sh build` (note that build must be installed)
+* run `./build.sh build`
 ## Installing from binary
-* run `python -m pip install {path_to_binary}`
+* run `uv pip install {path_to_binary}`
 
 
